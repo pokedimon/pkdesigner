@@ -1,0 +1,2 @@
+  - Avoid using emojis in the UI design and interface copy.
+- Instead, import Google Material Symbols via its Google Fonts stylesheet URL and use standard Material Symbols icons (`material-symbols-outlined`) across the interface.

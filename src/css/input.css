@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .canvas-grid {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(161, 161, 170, 0.15) 1px, transparent 1px);
+  }
+  .canvas-grid-dark {
+    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgba(113, 113, 122, 0.25) 1px, transparent 1px);
+  }
+}
+
+.material-symbols-outlined,
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded', 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  vertical-align: middle;
+  line-height: 1;
+  font-size: 15px;
+}

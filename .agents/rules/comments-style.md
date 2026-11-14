@@ -1,0 +1,2 @@
+- Write all inline code comments in English.
+- Keep comments simple, clear, and concise - focus on explaining *why* rather than *what* so they take up minimal space and keep the code clean.
