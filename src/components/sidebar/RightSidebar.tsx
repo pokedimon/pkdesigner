@@ -57,6 +57,12 @@ export const RightSidebar: React.FC = () => {
             </span>
             <div className="flex flex-col gap-1.5 text-zinc-400">
               <div className="flex items-center justify-between">
+                <span>Duplicate element</span>
+                <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
+                  Ctrl+D
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
                 <span>Undo / Redo</span>
                 <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
                   Ctrl+Z / Ctrl+Y
@@ -117,7 +123,7 @@ export const RightSidebar: React.FC = () => {
           <button
             type="button"
             onClick={() => duplicateElement(selectedNode.id)}
-            title="Duplicate element"
+            title="Duplicate element (Ctrl+D)"
             className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
           >
             <span className="material-symbols-outlined text-[14px]">content_copy</span>

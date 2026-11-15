@@ -124,7 +124,7 @@ export const FloatingContextMenu: React.FC = () => {
         <button
           type="button"
           onClick={() => duplicateElement(selectedNode.id)}
-          title="Duplicate"
+          title="Duplicate (Ctrl+D)"
           className="flex h-4 w-4 items-center justify-center hover:text-indigo-100 rounded-full"
         >
           <span className="material-symbols-outlined text-[11px]">content_copy</span>

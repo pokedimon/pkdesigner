@@ -104,16 +104,21 @@ export function insertNodeIntoTree(
   });
 }
 
-// Duplicates a node right next to itself in its parent list
+// Duplicates a node right next to itself in its parent list without mutating input nodes
 export function duplicateNodeInTree(nodes: ElementNode[], id: string): ElementNode[] {
   const result: ElementNode[] = [];
 
   for (const node of nodes) {
-    result.push(node);
     if (node.id === id) {
+      result.push(node);
       result.push(cloneNodeWithFreshIds(node));
     } else if (node.children && node.children.length > 0) {
-      node.children = duplicateNodeInTree(node.children, id);
+      result.push({
+        ...node,
+        children: duplicateNodeInTree(node.children, id),
+      });
+    } else {
+      result.push(node);
     }
   }
 

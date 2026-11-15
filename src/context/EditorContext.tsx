@@ -11,7 +11,6 @@ import {
 import { EditorContext } from './useEditor.ts';
 
 export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [elements, setElements] = useState<ElementNode[]>(INITIAL_ELEMENTS);
   const [selectedId, setSelectedId] = useState<string | null>('hero_heading');
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -23,6 +22,8 @@ export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [history, setHistory] = useState<ElementNode[][]>([INITIAL_ELEMENTS]);
   const [historyIndex, setHistoryIndex] = useState<number>(0);
 
+  const elements = history[historyIndex] ?? INITIAL_ELEMENTS;
+
   // Synchronizes document class with theme
   useEffect(() => {
     const root = document.documentElement;
@@ -33,67 +34,71 @@ export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   }, [theme]);
 
-  // Push new state into the history stack
-  const pushHistory = useCallback((nextElements: ElementNode[]) => {
-    setHistory((prev) => {
-      const sliced = prev.slice(0, historyIndex + 1);
-      return [...sliced, nextElements];
-    });
-    setHistoryIndex((prev) => prev + 1);
-  }, [historyIndex]);
+  // Commit updates to elements and record in history cleanly
+  const commit = useCallback(
+    (updater: (current: ElementNode[]) => ElementNode[]) => {
+      setHistory((prevHistory) => {
+        const current = prevHistory[historyIndex] ?? INITIAL_ELEMENTS;
+        const next = updater(current);
+        const sliced = prevHistory.slice(0, historyIndex + 1);
+        return [...sliced, next];
+      });
+      setHistoryIndex((prev) => prev + 1);
+    },
+    [historyIndex],
+  );
 
-  const addElement = useCallback((node: ElementNode, parentId?: string | null) => {
-    setElements((prev) => {
-      const next = insertNodeIntoTree(prev, node, parentId);
-      pushHistory(next);
-      return next;
-    });
-    setSelectedId(node.id);
-  }, [pushHistory]);
+  const addElement = useCallback(
+    (node: ElementNode, parentId?: string | null) => {
+      commit((current) => insertNodeIntoTree(current, node, parentId));
+      setSelectedId(node.id);
+    },
+    [commit],
+  );
 
-  const updateElement = useCallback((id: string, updates: Partial<ElementNode>) => {
-    setElements((prev) => {
-      const next = updateNodeInTree(prev, id, (node) => ({
-        ...node,
-        ...updates,
-      }));
-      pushHistory(next);
-      return next;
-    });
-  }, [pushHistory]);
+  const updateElement = useCallback(
+    (id: string, updates: Partial<ElementNode>) => {
+      commit((current) =>
+        updateNodeInTree(current, id, (node) => ({
+          ...node,
+          ...updates,
+        })),
+      );
+    },
+    [commit],
+  );
 
-  const updateElementStyles = useCallback((id: string, styleUpdates: Partial<ElementStyles>) => {
-    setElements((prev) => {
-      const next = updateNodeInTree(prev, id, (node) => ({
-        ...node,
-        styles: {
-          ...node.styles,
-          ...styleUpdates,
-        },
-      }));
-      pushHistory(next);
-      return next;
-    });
-  }, [pushHistory]);
+  const updateElementStyles = useCallback(
+    (id: string, styleUpdates: Partial<ElementStyles>) => {
+      commit((current) =>
+        updateNodeInTree(current, id, (node) => ({
+          ...node,
+          styles: {
+            ...node.styles,
+            ...styleUpdates,
+          },
+        })),
+      );
+    },
+    [commit],
+  );
 
-  const deleteElement = useCallback((id: string) => {
-    setElements((prev) => {
-      const next = deleteNodeFromTree(prev, id);
-      pushHistory(next);
-      return next;
-    });
-    if (selectedId === id) {
-      setSelectedId(null);
-    }
-  }, [selectedId, pushHistory]);
+  const deleteElement = useCallback(
+    (id: string) => {
+      commit((current) => deleteNodeFromTree(current, id));
+      if (selectedId === id) {
+        setSelectedId(null);
+      }
+    },
+    [commit, selectedId],
+  );
 
-  const duplicateElement = useCallback((id: string) => {
-    setElements((prev) => {
-      const next = duplicateNodeInTree(prev, id);
-      pushHistory(next);
-      return next;
-    });
-  }, [pushHistory]);
+  const duplicateElement = useCallback(
+    (id: string) => {
+      commit((current) => duplicateNodeInTree(current, id));
+    },
+    [commit],
+  );
 
   const selectElement = useCallback((id: string | null) => {
     setSelectedId(id);
@@ -128,21 +133,17 @@ export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const undo = useCallback(() => {
     if (historyIndex > 0) {
-      const nextIndex = historyIndex - 1;
-      setHistoryIndex(nextIndex);
-      setElements(history[nextIndex]);
+      setHistoryIndex((prev) => Math.max(0, prev - 1));
     }
-  }, [history, historyIndex]);
+  }, [historyIndex]);
 
   const redo = useCallback(() => {
     if (historyIndex < history.length - 1) {
-      const nextIndex = historyIndex + 1;
-      setHistoryIndex(nextIndex);
-      setElements(history[nextIndex]);
+      setHistoryIndex((prev) => Math.min(history.length - 1, prev + 1));
     }
-  }, [history, historyIndex]);
+  }, [history.length, historyIndex]);
 
-  // Global keyboard shortcuts for undo, redo, and element deletion
+  // Global keyboard shortcuts for undo, redo, duplicate, and element deletion
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // Don't intercept when actively typing in an input or textarea
@@ -164,6 +165,11 @@ export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
         e.preventDefault();
         redo();
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'd') {
+        if (selectedId) {
+          e.preventDefault();
+          duplicateElement(selectedId);
+        }
       } else if (e.key === 'Delete' || e.key === 'Backspace') {
         if (selectedId) {
           e.preventDefault();
@@ -176,7 +182,7 @@ export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [undo, redo, selectedId, deleteElement]);
+  }, [undo, redo, selectedId, deleteElement, duplicateElement]);
 
   const selectedNode = selectedId ? findNodeById(elements, selectedId) : null;
 
