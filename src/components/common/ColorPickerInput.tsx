@@ -34,17 +34,17 @@ export const ColorPickerInput: React.FC<ColorPickerInputProps> = ({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <div className="flex items-center justify-between text-xs text-zinc-400">
+      <div className="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
         <span>{label}</span>
-        <span className="font-mono text-[11px] text-zinc-500 uppercase">
+        <span className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500 uppercase">
           {isTransparent ? 'none' : value}
         </span>
       </div>
 
       <div className="flex items-center gap-2">
-        <label className="relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900 shadow-sm overflow-hidden hover:border-zinc-500 transition-colors">
+        <label className="relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-xs overflow-hidden hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors">
           {isTransparent ? (
-            <span className="material-symbols-outlined text-[14px] text-zinc-500">block</span>
+            <span className="material-symbols-outlined text-[14px] text-zinc-400 dark:text-zinc-500">block</span>
           ) : (
             <div className="h-full w-full" style={{ backgroundColor: value }} />
           )}
@@ -61,7 +61,7 @@ export const ColorPickerInput: React.FC<ColorPickerInputProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="transparent or #hex"
-          className="h-8 flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-2.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-indigo-500 focus:outline-none font-mono"
+          className="h-8 flex-1 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-2.5 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:outline-none font-mono"
         />
 
         {!isTransparent && (
@@ -69,7 +69,7 @@ export const ColorPickerInput: React.FC<ColorPickerInputProps> = ({
             type="button"
             title="Clear color"
             onClick={() => onChange('transparent')}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">close</span>
           </button>
@@ -83,11 +83,11 @@ export const ColorPickerInput: React.FC<ColorPickerInputProps> = ({
             key={preset}
             type="button"
             onClick={() => onChange(preset)}
-            className={`h-4 w-4 rounded-sm border transition-transform hover:scale-110 ${
-              value === preset ? 'border-indigo-500 ring-1 ring-indigo-500' : 'border-zinc-700'
+            className={`h-4 w-4 rounded-xs border transition-transform hover:scale-110 ${
+              value === preset ? 'border-indigo-500 ring-1 ring-indigo-500' : 'border-zinc-300 dark:border-zinc-700'
             }`}
             style={{
-              backgroundColor: preset === 'transparent' ? '#27272a' : preset,
+              backgroundColor: preset === 'transparent' ? '#71717a' : preset,
             }}
             title={preset}
           />

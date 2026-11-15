@@ -28,15 +28,15 @@ export const Header: React.FC = () => {
   } = useEditor();
 
   return (
-    <header id="app-header" className="flex h-14 w-full items-center justify-between border-b border-zinc-800 bg-zinc-950 px-4 select-none z-30">
+    <header id="app-header" className="flex h-14 w-full items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 select-none z-30 transition-colors">
       {/* Brand & Workspace Title */}
       <div className="flex items-center gap-3">
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
           <span className="material-symbols-outlined text-[16px]">design_services</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-bold tracking-tight text-zinc-100">pkdesigner</span>
-          <span className="rounded-full bg-zinc-800/80 px-2 py-0.5 text-[10px] font-medium text-zinc-400">
+          <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100">pkdesigner</span>
+          <span className="rounded-full bg-zinc-100 dark:bg-zinc-800/80 px-2 py-0.5 text-[10px] font-medium text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50">
             v0.1
           </span>
         </div>
@@ -45,7 +45,7 @@ export const Header: React.FC = () => {
       {/* Middle: Viewport Switcher & Canvas Zoom */}
       <div className="flex items-center gap-2">
         {/* Device Switcher */}
-        <div className="flex items-center rounded-full border border-zinc-800 bg-zinc-900/90 p-0.5">
+        <div className="flex items-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/90 p-0.5">
           {VIEWPORTS.map((item) => (
             <button
               key={item.id}
@@ -54,8 +54,8 @@ export const Header: React.FC = () => {
               title={item.label}
               className={`flex h-7 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium transition-colors ${
                 viewport === item.id
-                  ? 'bg-zinc-800 text-indigo-400 shadow-sm'
-                  : 'text-zinc-400 hover:text-zinc-200'
+                  ? 'bg-white dark:bg-zinc-800 text-indigo-600 dark:text-indigo-400 shadow-xs'
+                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
               }`}
             >
               <span className="material-symbols-outlined text-[14px]">{item.icon}</span>
@@ -64,15 +64,15 @@ export const Header: React.FC = () => {
           ))}
         </div>
 
-        <div className="h-4 w-[1px] bg-zinc-800 mx-1" />
+        <div className="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800 mx-1" />
 
         {/* Zoom Controls */}
-        <div className="flex items-center rounded-full border border-zinc-800 bg-zinc-900/90 p-0.5">
+        <div className="flex items-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/90 p-0.5">
           <button
             type="button"
             onClick={zoomOut}
             title="Zoom out"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">remove</span>
           </button>
@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
             type="button"
             onClick={resetZoom}
             title="Reset zoom to 100%"
-            className="px-2 text-xs font-mono font-medium text-zinc-300 hover:text-indigo-400"
+            className="px-2 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400"
           >
             {zoom}%
           </button>
@@ -88,7 +88,7 @@ export const Header: React.FC = () => {
             type="button"
             onClick={zoomIn}
             title="Zoom in"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">add</span>
           </button>
@@ -98,13 +98,13 @@ export const Header: React.FC = () => {
       {/* Right Controls: History, Preview, Theme */}
       <div className="flex items-center gap-1.5">
         {/* Undo / Redo */}
-        <div className="flex items-center rounded-full border border-zinc-800 bg-zinc-900/90 p-0.5">
+        <div className="flex items-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/90 p-0.5">
           <button
             type="button"
             onClick={undo}
             disabled={!canUndo}
             title="Undo (Ctrl+Z)"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 disabled:opacity-40 disabled:hover:bg-transparent"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 disabled:opacity-40 disabled:hover:bg-transparent transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">undo</span>
           </button>
@@ -113,13 +113,13 @@ export const Header: React.FC = () => {
             onClick={redo}
             disabled={!canRedo}
             title="Redo (Ctrl+Y)"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 disabled:opacity-40 disabled:hover:bg-transparent"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 disabled:opacity-40 disabled:hover:bg-transparent transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">redo</span>
           </button>
         </div>
 
-        <div className="h-4 w-[1px] bg-zinc-800 mx-1" />
+        <div className="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800 mx-1" />
 
         {/* Preview Mode */}
         <button
@@ -128,8 +128,8 @@ export const Header: React.FC = () => {
           title={previewMode ? 'Exit Preview' : 'Live Preview'}
           className={`flex h-8 items-center gap-1.5 rounded-full border px-3 text-xs font-medium transition-colors ${
             previewMode
-              ? 'border-indigo-500 bg-indigo-500/10 text-indigo-400'
-              : 'border-zinc-800 bg-zinc-900 text-zinc-300 hover:bg-zinc-800'
+              ? 'border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400'
+              : 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800'
           }`}
         >
           <span className="material-symbols-outlined text-[15px]">
@@ -143,7 +143,7 @@ export const Header: React.FC = () => {
           type="button"
           onClick={toggleTheme}
           title={theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
-          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
         >
           <span className="material-symbols-outlined text-[16px]">
             {theme === 'dark' ? 'light_mode' : 'dark_mode'}

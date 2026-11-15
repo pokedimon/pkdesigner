@@ -11,7 +11,6 @@ export const Canvas: React.FC = () => {
     zoom,
     viewport,
     previewMode,
-    theme,
   } = useEditor();
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -44,11 +43,7 @@ export const Canvas: React.FC = () => {
     <main
       ref={containerRef}
       onClick={handleCanvasBackgroundClick}
-      className={`relative flex-1 overflow-auto p-8 flex items-start justify-center transition-colors select-none ${
-        theme === 'dark'
-          ? 'bg-zinc-950 canvas-grid-dark'
-          : 'bg-zinc-100 canvas-grid'
-      }`}
+      className="relative flex-1 overflow-auto p-8 flex items-start justify-center select-none bg-zinc-950 canvas-grid-dark"
     >
       {/* Zoom and Transform Container */}
       <div
@@ -76,11 +71,7 @@ export const Canvas: React.FC = () => {
             width: currentDimensions.width,
             minHeight: currentDimensions.minHeight,
           }}
-          className={`relative rounded-xl border transition-all shadow-2xl p-6 flex flex-col gap-4 ${
-            theme === 'dark'
-              ? 'bg-zinc-900 border-zinc-800 text-zinc-100'
-              : 'bg-white border-zinc-300 text-zinc-900'
-          }`}
+          className="relative rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-100 transition-all shadow-2xl p-6 flex flex-col gap-4"
         >
           {elements.length === 0 ? (
             <div className="flex h-64 flex-col items-center justify-center rounded-lg border-2 border-dashed border-zinc-700/50 p-6 text-center text-zinc-500">

@@ -33,18 +33,18 @@ export const RightSidebar: React.FC = () => {
 
   if (!selectedNode) {
     return (
-      <aside id="right-sidebar" className="flex h-full w-72 flex-col border-l border-zinc-800 bg-zinc-950 p-4 text-xs select-none z-20 overflow-y-auto">
+      <aside id="right-sidebar" className="flex h-full w-72 flex-col border-l border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 text-xs select-none z-20 overflow-y-auto transition-colors">
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2 pb-3 border-b border-zinc-800">
-            <span className="material-symbols-outlined text-zinc-400">tune</span>
-            <span className="font-semibold text-zinc-200">Inspector</span>
+          <div className="flex items-center gap-2 pb-3 border-b border-zinc-200 dark:border-zinc-800">
+            <span className="material-symbols-outlined text-zinc-500 dark:text-zinc-400">tune</span>
+            <span className="font-semibold text-zinc-800 dark:text-zinc-200">Inspector</span>
           </div>
 
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-center">
-            <span className="material-symbols-outlined text-2xl text-zinc-600 mb-2">
+          <div className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 p-4 text-center">
+            <span className="material-symbols-outlined text-2xl text-zinc-400 dark:text-zinc-600 mb-2">
               touch_app
             </span>
-            <p className="font-medium text-zinc-300">No element selected</p>
+            <p className="font-medium text-zinc-700 dark:text-zinc-300">No element selected</p>
             <p className="text-zinc-500 mt-1">
               Click any element on the canvas or from the Layers tree to inspect and adjust its properties.
             </p>
@@ -52,37 +52,37 @@ export const RightSidebar: React.FC = () => {
 
           {/* Quick Shortcuts Guide */}
           <div className="flex flex-col gap-2 pt-2">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
               Shortcuts
             </span>
-            <div className="flex flex-col gap-1.5 text-zinc-400">
+            <div className="flex flex-col gap-1.5 text-zinc-600 dark:text-zinc-400">
               <div className="flex items-center justify-between">
                 <span>Duplicate element</span>
-                <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
+                <span className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-1.5 py-0.5 rounded text-zinc-700 dark:text-zinc-300">
                   Ctrl+D
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Undo / Redo</span>
-                <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
+                <span className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-1.5 py-0.5 rounded text-zinc-700 dark:text-zinc-300">
                   Ctrl+Z / Ctrl+Y
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Delete element</span>
-                <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
+                <span className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-1.5 py-0.5 rounded text-zinc-700 dark:text-zinc-300">
                   Delete / Backspace
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Deselect</span>
-                <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
+                <span className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-1.5 py-0.5 rounded text-zinc-700 dark:text-zinc-300">
                   Escape
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Edit text</span>
-                <span className="font-mono text-[10px] bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded">
+                <span className="font-mono text-[10px] bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-1.5 py-0.5 rounded text-zinc-700 dark:text-zinc-300">
                   Double Click
                 </span>
               </div>
@@ -90,13 +90,13 @@ export const RightSidebar: React.FC = () => {
           </div>
 
           {/* Canvas Stats */}
-          <div className="flex flex-col gap-2 pt-2 border-t border-zinc-800">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+          <div className="flex flex-col gap-2 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
               Canvas Overview
             </span>
-            <div className="flex items-center justify-between text-zinc-400">
+            <div className="flex items-center justify-between text-zinc-600 dark:text-zinc-400">
               <span>Root nodes</span>
-              <span className="font-mono text-zinc-200">{elements.length}</span>
+              <span className="font-mono text-zinc-800 dark:text-zinc-200">{elements.length}</span>
             </div>
           </div>
         </div>
@@ -108,14 +108,14 @@ export const RightSidebar: React.FC = () => {
   const isTextElement = ['h1', 'h2', 'h3', 'p', 'span', 'a', 'button'].includes(selectedNode.tag);
 
   return (
-    <aside id="right-sidebar" className="flex h-full w-72 flex-col border-l border-zinc-800 bg-zinc-950 select-none z-20 overflow-y-auto custom-scrollbar">
+    <aside id="right-sidebar" className="flex h-full w-72 flex-col border-l border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 select-none z-20 overflow-y-auto custom-scrollbar transition-colors">
       {/* Top Header: Tag, Name & Primary Actions */}
-      <div className="flex items-center justify-between border-b border-zinc-800 p-3 bg-zinc-900/40">
+      <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 p-3 bg-zinc-50 dark:bg-zinc-900/40">
         <div className="flex items-center gap-2 overflow-hidden">
-          <span className="font-mono text-[10px] uppercase px-1.5 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800 font-semibold">
+          <span className="font-mono text-[10px] uppercase px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 font-semibold">
             {selectedNode.tag}
           </span>
-          <span className="truncate text-xs font-semibold text-zinc-200" title={selectedNode.name}>
+          <span className="truncate text-xs font-semibold text-zinc-800 dark:text-zinc-200" title={selectedNode.name}>
             {selectedNode.name}
           </span>
         </div>
@@ -124,7 +124,7 @@ export const RightSidebar: React.FC = () => {
             type="button"
             onClick={() => duplicateElement(selectedNode.id)}
             title="Duplicate element (Ctrl+D)"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">content_copy</span>
           </button>
@@ -132,7 +132,7 @@ export const RightSidebar: React.FC = () => {
             type="button"
             onClick={() => deleteElement(selectedNode.id)}
             title="Delete element"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800 hover:text-red-400"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-red-500 dark:hover:text-red-400 transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">delete</span>
           </button>
@@ -142,16 +142,16 @@ export const RightSidebar: React.FC = () => {
       <div className="flex flex-col gap-5 p-4 text-xs">
         {/* Section 1: Identification & Tag Type */}
         <div className="flex flex-col gap-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
             Element
           </span>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Tag</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Tag</label>
               <select
                 value={selectedNode.tag}
                 onChange={(e) => updateElement(selectedNode.id, { tag: e.target.value as SupportedTag })}
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
               >
                 {SUPPORTED_TAGS.map((t) => (
                   <option key={t.value} value={t.value}>
@@ -161,12 +161,12 @@ export const RightSidebar: React.FC = () => {
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Label</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Label</label>
               <input
                 type="text"
                 value={selectedNode.name}
                 onChange={(e) => updateElement(selectedNode.id, { name: e.target.value })}
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
               />
             </div>
           </div>
@@ -174,8 +174,8 @@ export const RightSidebar: React.FC = () => {
 
         {/* Section 2: Text & Content (Contextual) */}
         {isTextElement && (
-          <div className="flex flex-col gap-2 border-t border-zinc-850 pt-3">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+          <div className="flex flex-col gap-2 border-t border-zinc-200 dark:border-zinc-800 pt-3">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
               Content
             </span>
             <textarea
@@ -183,19 +183,19 @@ export const RightSidebar: React.FC = () => {
               value={selectedNode.textContent || ''}
               onChange={(e) => updateElement(selectedNode.id, { textContent: e.target.value })}
               placeholder="Enter text..."
-              className="rounded-md border border-zinc-800 bg-zinc-900 p-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none resize-none"
+              className="rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 p-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none resize-none"
             />
           </div>
         )}
 
         {/* Image source input */}
         {selectedNode.tag === 'img' && (
-          <div className="flex flex-col gap-2 border-t border-zinc-850 pt-3">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+          <div className="flex flex-col gap-2 border-t border-zinc-200 dark:border-zinc-800 pt-3">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
               Image Properties
             </span>
             <div className="flex flex-col gap-1.5">
-              <label className="text-[11px] text-zinc-400">Image URL</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Image URL</label>
               <input
                 type="text"
                 value={selectedNode.attributes.src || ''}
@@ -204,11 +204,11 @@ export const RightSidebar: React.FC = () => {
                     attributes: { ...selectedNode.attributes, src: e.target.value },
                   })
                 }
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className="text-[11px] text-zinc-400">Alt text</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Alt text</label>
               <input
                 type="text"
                 value={selectedNode.attributes.alt || ''}
@@ -217,24 +217,24 @@ export const RightSidebar: React.FC = () => {
                     attributes: { ...selectedNode.attributes, alt: e.target.value },
                   })
                 }
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
               />
             </div>
           </div>
         )}
 
         {/* Section 3: Layout & Flow */}
-        <div className="flex flex-col gap-2 border-t border-zinc-850 pt-3">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+        <div className="flex flex-col gap-2 border-t border-zinc-200 dark:border-zinc-800 pt-3">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
             Layout
           </span>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Display</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Display</label>
               <select
                 value={styles.display || 'block'}
                 onChange={(e) => updateElementStyles(selectedNode.id, { display: e.target.value })}
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
               >
                 <option value="block">Block</option>
                 <option value="flex">Flex</option>
@@ -245,7 +245,7 @@ export const RightSidebar: React.FC = () => {
 
             {styles.display === 'flex' && (
               <div className="flex flex-col gap-1">
-                <label className="text-[11px] text-zinc-400">Direction</label>
+                <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Direction</label>
                 <select
                   value={styles.flexDirection || 'row'}
                   onChange={(e) =>
@@ -253,7 +253,7 @@ export const RightSidebar: React.FC = () => {
                       flexDirection: e.target.value as 'row' | 'column',
                     })
                   }
-                  className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                  className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
                 >
                   <option value="row">Row (Horizontal)</option>
                   <option value="column">Column (Vertical)</option>
@@ -265,7 +265,7 @@ export const RightSidebar: React.FC = () => {
           {styles.display === 'flex' && (
             <div className="grid grid-cols-2 gap-2 pt-1">
               <div className="flex flex-col gap-1">
-                <label className="text-[11px] text-zinc-400">Align</label>
+                <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Align</label>
                 <select
                   value={styles.alignItems || 'stretch'}
                   onChange={(e) =>
@@ -273,7 +273,7 @@ export const RightSidebar: React.FC = () => {
                       alignItems: e.target.value as 'flex-start' | 'center' | 'flex-end' | 'stretch',
                     })
                   }
-                  className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                  className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
                 >
                   <option value="flex-start">Start</option>
                   <option value="center">Center</option>
@@ -282,7 +282,7 @@ export const RightSidebar: React.FC = () => {
                 </select>
               </div>
               <div className="flex flex-col gap-1">
-                <label className="text-[11px] text-zinc-400">Justify</label>
+                <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Justify</label>
                 <select
                   value={styles.justifyContent || 'flex-start'}
                   onChange={(e) =>
@@ -290,7 +290,7 @@ export const RightSidebar: React.FC = () => {
                       justifyContent: e.target.value as 'flex-start' | 'center' | 'flex-end' | 'space-between',
                     })
                   }
-                  className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                  className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
                 >
                   <option value="flex-start">Start</option>
                   <option value="center">Center</option>
@@ -299,13 +299,13 @@ export const RightSidebar: React.FC = () => {
                 </select>
               </div>
               <div className="col-span-2 flex flex-col gap-1">
-                <label className="text-[11px] text-zinc-400">Gap</label>
+                <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Gap</label>
                 <input
                   type="text"
                   value={styles.gap || ''}
                   onChange={(e) => updateElementStyles(selectedNode.id, { gap: e.target.value })}
                   placeholder="e.g. 12px, 1rem"
-                  className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                  className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
                 />
               </div>
             </div>
@@ -313,49 +313,49 @@ export const RightSidebar: React.FC = () => {
         </div>
 
         {/* Section 4: Dimensions & Box Model */}
-        <div className="flex flex-col gap-2 border-t border-zinc-850 pt-3">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+        <div className="flex flex-col gap-2 border-t border-zinc-200 dark:border-zinc-800 pt-3">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
             Dimensions & Spacing
           </span>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Width</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Width</label>
               <input
                 type="text"
                 value={styles.width || ''}
                 onChange={(e) => updateElementStyles(selectedNode.id, { width: e.target.value })}
                 placeholder="100%, 300px, auto"
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Height</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Height</label>
               <input
                 type="text"
                 value={styles.height || ''}
                 onChange={(e) => updateElementStyles(selectedNode.id, { height: e.target.value })}
                 placeholder="auto, 200px"
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Padding</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Padding</label>
               <input
                 type="text"
                 value={styles.padding || ''}
                 onChange={(e) => updateElementStyles(selectedNode.id, { padding: e.target.value })}
                 placeholder="e.g. 16px, 12px 24px"
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Margin</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Margin</label>
               <input
                 type="text"
                 value={styles.margin || ''}
                 onChange={(e) => updateElementStyles(selectedNode.id, { margin: e.target.value })}
                 placeholder="e.g. 0 0 16px 0"
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
           </div>
@@ -363,27 +363,27 @@ export const RightSidebar: React.FC = () => {
 
         {/* Section 5: Typography (When applicable) */}
         {isTextElement && (
-          <div className="flex flex-col gap-2 border-t border-zinc-850 pt-3">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+          <div className="flex flex-col gap-2 border-t border-zinc-200 dark:border-zinc-800 pt-3">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
               Typography
             </span>
             <div className="grid grid-cols-2 gap-2">
               <div className="flex flex-col gap-1">
-                <label className="text-[11px] text-zinc-400">Font Size</label>
+                <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Font Size</label>
                 <input
                   type="text"
                   value={styles.fontSize || ''}
                   onChange={(e) => updateElementStyles(selectedNode.id, { fontSize: e.target.value })}
                   placeholder="e.g. 16px, 24px"
-                  className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                  className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <label className="text-[11px] text-zinc-400">Weight</label>
+                <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Weight</label>
                 <select
                   value={styles.fontWeight || '400'}
                   onChange={(e) => updateElementStyles(selectedNode.id, { fontWeight: e.target.value })}
-                  className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+                  className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
                 >
                   <option value="400">Regular (400)</option>
                   <option value="500">Medium (500)</option>
@@ -395,8 +395,8 @@ export const RightSidebar: React.FC = () => {
 
             {/* Text Alignment */}
             <div className="flex flex-col gap-1 pt-1">
-              <label className="text-[11px] text-zinc-400">Alignment</label>
-              <div className="grid grid-cols-4 gap-1 rounded-md border border-zinc-800 bg-zinc-900 p-0.5">
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Alignment</label>
+              <div className="grid grid-cols-4 gap-1 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 p-0.5">
                 {(['left', 'center', 'right', 'justify'] as const).map((align) => (
                   <button
                     key={align}
@@ -404,8 +404,8 @@ export const RightSidebar: React.FC = () => {
                     onClick={() => updateElementStyles(selectedNode.id, { textAlign: align })}
                     className={`flex h-7 items-center justify-center rounded text-xs transition-colors ${
                       (styles.textAlign || 'left') === align
-                        ? 'bg-zinc-800 text-indigo-400 shadow-sm'
-                        : 'text-zinc-400 hover:text-zinc-200'
+                        ? 'bg-white dark:bg-zinc-800 text-indigo-600 dark:text-indigo-400 shadow-xs'
+                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
                     }`}
                   >
                     <span className="material-symbols-outlined text-[14px]">
@@ -434,8 +434,8 @@ export const RightSidebar: React.FC = () => {
         )}
 
         {/* Section 6: Appearance (Colors, Borders & Radius) */}
-        <div className="flex flex-col gap-3 border-t border-zinc-850 pt-3">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+        <div className="flex flex-col gap-3 border-t border-zinc-200 dark:border-zinc-800 pt-3">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
             Appearance
           </span>
 
@@ -447,23 +447,23 @@ export const RightSidebar: React.FC = () => {
 
           <div className="grid grid-cols-2 gap-2 pt-1">
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Radius</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Radius</label>
               <input
                 type="text"
                 value={styles.borderRadius || ''}
                 onChange={(e) => updateElementStyles(selectedNode.id, { borderRadius: e.target.value })}
                 placeholder="e.g. 8px, 9999px"
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-[11px] text-zinc-400">Border Width</label>
+              <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Border Width</label>
               <input
                 type="text"
                 value={styles.borderWidth || ''}
                 onChange={(e) => updateElementStyles(selectedNode.id, { borderWidth: e.target.value })}
                 placeholder="e.g. 1px, 2px"
-                className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none font-mono"
+                className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-600 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none font-mono"
               />
             </div>
           </div>
@@ -476,7 +476,7 @@ export const RightSidebar: React.FC = () => {
 
           {/* Border Style */}
           <div className="flex flex-col gap-1">
-            <label className="text-[11px] text-zinc-400">Border Style</label>
+            <label className="text-[11px] text-zinc-500 dark:text-zinc-400">Border Style</label>
             <select
               value={styles.borderStyle || 'solid'}
               onChange={(e) =>
@@ -484,7 +484,7 @@ export const RightSidebar: React.FC = () => {
                   borderStyle: e.target.value as 'solid' | 'dashed' | 'dotted' | 'none',
                 })
               }
-              className="h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 text-xs text-zinc-200 focus:border-indigo-500 focus:outline-none"
+              className="h-8 rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2 text-xs text-zinc-900 dark:text-zinc-200 focus:border-indigo-500 focus:bg-white dark:focus:bg-zinc-900 focus:outline-none"
             >
               <option value="solid">Solid</option>
               <option value="dashed">Dashed</option>
@@ -495,7 +495,7 @@ export const RightSidebar: React.FC = () => {
 
           {/* Opacity */}
           <div className="flex flex-col gap-1 pt-1">
-            <div className="flex items-center justify-between text-[11px] text-zinc-400">
+            <div className="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400">
               <span>Opacity</span>
               <span className="font-mono">{Math.round((styles.opacity ? parseFloat(styles.opacity) : 1) * 100)}%</span>
             </div>
@@ -506,7 +506,7 @@ export const RightSidebar: React.FC = () => {
               step="0.05"
               value={styles.opacity || '1'}
               onChange={(e) => updateElementStyles(selectedNode.id, { opacity: e.target.value })}
-              className="accent-indigo-500 h-1.5 bg-zinc-800 rounded-lg cursor-pointer"
+              className="accent-indigo-500 h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg cursor-pointer"
             />
           </div>
         </div>
